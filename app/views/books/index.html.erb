@@ -1,3 +1,18 @@
+<h1>User info</h1>
+<table>
+  <tr>
+    <td>
+      <%= image_tag @user.get_profile_image(100,100) %>
+    </td>
+  </tr>
+  <tr>
+    <td><p>name     <%= @user.name %></p></td>
+  </tr>
+  <tr>
+    <td><p>introduction</p></td>
+  </tr>
+</table>
+
 <h1>New book</h1>
 <%= form_with model: @book do |f| %>
   <h4>Title</h4>
@@ -10,16 +25,16 @@
 
 <h1>Book detail</h1>
 <table>
-      <% @books.each do |book| %>
-      <tr>
-        <td>
-          <%= image_tag book.get_image %>
-          <p><%= book.user.name %></p>
-        </td>
-        <td><%= book.title %></td>
-        <td><%= book.body %></td>
-        <td><span class = "link"><%= link_to "Edit", edit_book_path(book.id) %></span></td>
-        <td><span class = "link"><%= link_to "Destroy", book_path(book.id), method: :delete, "data-confirm" => "本当に消しますか？" %></span></td>
-      </tr>
-      <% end %>
+  <% @books.each do |book| %>
+  <tr>
+    <td>
+      <%= image_tag book.get_image %>
+      <p><%= book.user.name %></p>
+    </td>
+    <td><%= book.title %></td>
+    <td><%= book.body %></td>
+    <td><span class = "link"><%= link_to "Edit", edit_book_path(book.id) %></span></td>
+    <td><span class = "link"><%= link_to "Destroy", book_path(book.id), method: :delete, "data-confirm" => "本当に消しますか？" %></span></td>
+  </tr>
+  <% end %>
 </table>
