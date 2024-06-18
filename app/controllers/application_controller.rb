@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_action :authenticate_user!, except: [:top]
   # nameでのsign_up, sign_in操作ができるようにname保存の許可
   before_action :configure_permitted_parameters, if: :devise_controller?
 
