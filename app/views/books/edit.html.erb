@@ -17,6 +17,12 @@
         <%= f.text_area :body %>
         <%= f.submit 'Update Book', class:"btn btn-success d-block" %>
       <% end %>
+      
+      <div>
+        <%= link_to "Show", book_path(params[:id]) %>
+        <span> | </span>
+        <%= link_to "Back", books_path %>
+      </div>
     </div>
   </div>
 </div>
