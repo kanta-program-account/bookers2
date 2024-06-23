@@ -1,9 +1,13 @@
 
-UsersController
-  GET #edit
-    ログインユーザーの場合
-[32m      レスポンスが成功すること[0m
-[32m      @userが正しく設定されていること[0m
+BookCommentモデルのテスト
+  バリデーションのテスト
+    commentカラム
+[32m      空欄でないこと[0m
+  アソシエーションのテスト
+    Bookモデルとの関係
+[32m      N:1となっている[0m
+    Userモデルとの関係
+[32m      N:1となっている[0m
 
 Bookモデルのテスト
   バリデーションのテスト
@@ -14,6 +18,15 @@ Bookモデルのテスト
 [32m      200文字以下であること: 200文字は〇[0m
 [32m      200文字以下であること: 201文字は×[0m
   アソシエーションのテスト
+    Userモデルとの関係
+[32m      N:1となっている[0m
+
+Favoriteモデルのテスト
+  バリデーションのテスト
+[32m    ユーザーは一つの投稿に一つしかいいねできない[0m
+  アソシエーションのテスト
+    Bookモデルとの関係
+[32m      N:1となっている[0m
     Userモデルとの関係
 [32m      N:1となっている[0m
 
@@ -37,22 +50,21 @@ Userモデルのテスト
   トップ画面のテスト
     表示内容の確認
 [32m      URLが正しい[0m
-[32m      Log inリンクが表示される: 青色のボタンの表示が「Log in」である[0m
-[32m      Log inリンクの内容が正しい[0m
-[32m      Sign upリンクが表示される: 緑色のボタンの表示が「Sign up」である[0m
-[32m      Sign upリンクの内容が正しい[0m
+[32m      Log inリンクが表示される: 左上から5番目のリンクが「Log in」である[0m
+[31m      Log inリンクの内容が正しい (FAILED - 1)[0m
+[32m      Sign upリンクが表示される: 左上から6番目のリンクが「Sign up」である[0m
+[31m      Sign upリンクの内容が正しい (FAILED - 2)[0m
   アバウト画面のテスト
     表示内容の確認
 [32m      URLが正しい[0m
   ヘッダーのテスト: ログインしていない場合
     表示内容の確認
-[32m      Bookersリンクが表示される: 左上から1番目のリンクが「Bookers」である[0m
-[32m      Homeリンクが表示される: 左上から2番目のリンクが「Home」である[0m
-[32m      Aboutリンクが表示される: 左上から3番目のリンクが「About」である[0m
-[32m      Sign upリンクが表示される: 左上から4番目のリンクが「Sign up」である[0m
-[32m      Log inリンクが表示される: 左上から5番目のリンクが「Log in」である[0m
+[32m      タイトルが表示される[0m
+[32m      Homeリンクが表示される: 左上から1番目のリンクが「Home」である[0m
+[32m      Aboutリンクが表示される: 左上から2番目のリンクが「About」である[0m
+[32m      Sign upリンクが表示される: 左上から3番目のリンクが「Sign up」である[0m
+[32m      Log inリンクが表示される: 左上から4番目のリンクが「Log in」である[0m
     リンクの内容を確認
-[32m      Bookersを押すと、トップ画面に遷移する[0m
 [32m      Homeを押すと、トップ画面に遷移する[0m
 [32m      Aboutを押すと、アバウト画面に遷移する[0m
 [32m      Sign upを押すと、新規登録画面に遷移する[0m
@@ -83,11 +95,11 @@ Userモデルのテスト
 [32m      ログインに失敗し、ログイン画面にリダイレクトされる[0m
   ヘッダーのテスト: ログインしている場合
     ヘッダーの表示を確認
-[32m      Bookersリンクが表示される: 左上から1番目のリンクが「Bookers」である[0m
-[32m      Homeリンクが表示される: 左上から2番目のリンクが「Home」である[0m
-[32m      Usersリンクが表示される: 左上から3番目のリンクが「Users」である[0m
-[32m      Booksリンクが表示される: 左上から4番目のリンクが「Books」である[0m
-[32m      Log outリンクが表示される: 左上から5番目のリンクが「Log out」である[0m
+[32m      タイトルが表示される[0m
+[32m      Homeリンクが表示される: 左上から1番目のリンクが「Home」である[0m
+[32m      Usersリンクが表示される: 左上から2番目のリンクが「Users」である[0m
+[32m      Booksリンクが表示される: 左上から3番目のリンクが「Books」である[0m
+[32m      Log outリンクが表示される: 左上から4番目のリンクが「Log out」である[0m
   ユーザログアウトのテスト
     ログアウト機能のテスト
 [32m      正しくログアウトできている: ログアウト後のリダイレクト先においてAbout画面へのリンクが存在する[0m
@@ -111,8 +123,8 @@ Userモデルのテスト
 [32m      「New book」と表示される[0m
 [32m      titleフォームが表示される[0m
 [32m      titleフォームに値が入っていない[0m
-[32m      bodyフォームが表示される[0m
-[32m      bodyフォームに値が入っていない[0m
+[32m      opinionフォームが表示される[0m
+[32m      opinionフォームに値が入っていない[0m
 [32m      Create Bookボタンが表示される[0m
     投稿成功のテスト
 [32m      自分の新しい投稿が正しく保存される[0m
@@ -123,7 +135,7 @@ Userモデルのテスト
 [32m      「Book detail」と表示される[0m
 [32m      ユーザ画像・名前のリンク先が正しい[0m
 [32m      投稿のtitleが表示される[0m
-[32m      投稿のbodyが表示される[0m
+[32m      投稿のopinionが表示される[0m
 [32m      投稿の編集リンクが表示される[0m
 [32m      投稿の削除リンクが表示される[0m
     サイドバーの確認
@@ -132,15 +144,14 @@ Userモデルのテスト
 [32m      「New book」と表示される[0m
 [32m      titleフォームが表示される[0m
 [32m      titleフォームに値が入っていない[0m
-[32m      bodyフォームが表示される[0m
-[32m      bodyフォームに値が入っていない[0m
+[32m      opinionフォームが表示される[0m
+[32m      opinionフォームに値が入っていない[0m
 [32m      Create Bookボタンが表示される[0m
     投稿成功のテスト
-[31m      自分の新しい投稿が正しく保存される (FAILED - 1)[0m
+[32m      自分の新しい投稿が正しく保存される[0m
     編集リンクのテスト
 [32m      編集画面に遷移する[0m
     削除リンクのテスト
-[32m      application.html.erbにjavascript_pack_tagを含んでいる[0m
 [32m      正しく削除される[0m
 [32m      リダイレクト先が、投稿一覧画面になっている[0m
   自分の投稿編集画面のテスト
@@ -148,7 +159,7 @@ Userモデルのテスト
 [32m      URLが正しい[0m
 [32m      「Editing Book」と表示される[0m
 [32m      title編集フォームが表示される[0m
-[32m      body編集フォームが表示される[0m
+[32m      opinion編集フォームが表示される[0m
 [32m      Update Bookボタンが表示される[0m
 [32m      Showリンクが表示される[0m
 [32m      Backリンクが表示される[0m
@@ -168,15 +179,15 @@ Userモデルのテスト
 [32m      「New book」と表示される[0m
 [32m      titleフォームが表示される[0m
 [32m      titleフォームに値が入っていない[0m
-[32m      bodyフォームが表示される[0m
-[32m      bodyフォームに値が入っていない[0m
+[32m      opinionフォームが表示される[0m
+[32m      opinionフォームに値が入っていない[0m
 [32m      Create Bookボタンが表示される[0m
   自分のユーザ詳細画面のテスト
     表示の確認
 [32m      URLが正しい[0m
 [32m      投稿一覧のユーザ画像のリンク先が正しい[0m
 [32m      投稿一覧に自分の投稿のtitleが表示され、リンクが正しい[0m
-[32m      投稿一覧に自分の投稿のbodyが表示される[0m
+[32m      投稿一覧に自分の投稿のopinionが表示される[0m
 [32m      他人の投稿は表示されない[0m
     サイドバーの確認
 [32m      自分の名前と紹介文が表示される[0m
@@ -184,8 +195,8 @@ Userモデルのテスト
 [32m      「New book」と表示される[0m
 [32m      titleフォームが表示される[0m
 [32m      titleフォームに値が入っていない[0m
-[32m      bodyフォームが表示される[0m
-[32m      bodyフォームに値が入っていない[0m
+[32m      opinionフォームが表示される[0m
+[32m      opinionフォームに値が入っていない[0m
 [32m      Create Bookボタンが表示される[0m
   自分のユーザ情報編集画面のテスト
     表示の確認
@@ -270,36 +281,300 @@ Userモデルのテスト
 [32m    投稿詳細画面[0m
   アイコンのテスト
     トップ画面
-[32m      本のアイコンが表示される[0m
+[31m      本のアイコンが表示される (FAILED - 3)[0m
     アバウト画面
-[32m      本のアイコンが表示される[0m
+[31m      本のアイコンが表示される (FAILED - 4)[0m
     ヘッダー: ログインしていない場合
-[32m      Homeリンクのアイコンが表示される[0m
-[32m      Aboutリンクのアイコンが表示される[0m
-[32m      Sign upリンクのアイコンが表示される[0m
-[32m      Log inリンクのアイコンが表示される[0m
+[31m      Homeリンクのアイコンが表示される (FAILED - 5)[0m
+[31m      Aboutリンクのアイコンが表示される (FAILED - 6)[0m
+[31m      Sign upリンクのアイコンが表示される (FAILED - 7)[0m
+[31m      Log inリンクのアイコンが表示される (FAILED - 8)[0m
     ヘッダー: ログインしている場合
-[32m      Homeリンクのアイコンが表示される[0m
-[32m      Usersリンクのアイコンが表示される[0m
-[32m      Booksリンクのアイコンが表示される[0m
-[32m      Log outリンクのアイコンが表示される[0m
+[31m      Homeリンクのアイコンが表示される (FAILED - 9)[0m
+[31m      Usersリンクのアイコンが表示される (FAILED - 10)[0m
+[31m      Booksリンクのアイコンが表示される (FAILED - 11)[0m
+[31m      Log outリンクのアイコンが表示される (FAILED - 12)[0m
     サイドバー
-[32m      ユーザ一覧画面でレンチアイコンが表示される[0m
-[32m      ユーザ詳細画面でレンチアイコンが表示される[0m
-[32m      投稿一覧画面でレンチアイコンが表示される[0m
-[32m      投稿詳細画面でレンチアイコンが表示される[0m
+[31m      ユーザ一覧画面でレンチアイコンが表示される (FAILED - 13)[0m
+[31m      ユーザ詳細画面でレンチアイコンが表示される (FAILED - 14)[0m
+[31m      投稿一覧画面でレンチアイコンが表示される (FAILED - 15)[0m
+[31m      投稿詳細画面でレンチアイコンが表示される (FAILED - 16)[0m
+
+[STEP4] いいねとコメントのテスト
+  投稿一覧画面のテスト[課題4追加分]
+    表示の確認
+[32m      いいねボタンのハートアイコンが表示される[0m
+[31m      いいねボタンが表示される (FAILED - 17)[0m
+[32m      コメント数が表示される[0m
+    いいね作成機能のテスト
+[31m      自分のいいねが正しく保存される (FAILED - 18)[0m
+[31m      リダイレクト先が投稿一覧画面になっている (FAILED - 19)[0m
+[31m      リダイレクト先でいいね数が正しく更新されている (FAILED - 20)[0m
+    いいね削除機能のテスト
+[31m      自分のいいねが正しく削除される (FAILED - 21)[0m
+[31m      リダイレクト先が投稿一覧画面になっている (FAILED - 22)[0m
+[31m      リダイレクト先でいいね数が正しく更新されている (FAILED - 23)[0m
+  自分の投稿詳細画面のテスト[課題4追加分]
+    表示の確認
+[32m      いいねボタンのハートアイコンが表示される[0m
+[31m      いいねボタンが表示される (FAILED - 24)[0m
+[32m      コメント数が表示される[0m
+[32m      コメント一覧でコメント投稿者の画像が表示される: fallbackの画像がサイドバーの1つ＋Book detail直下の1つ＋コメント一覧(2人)の2つの計4つ存在する[0m
+[32m      コメント一覧でコメント投稿者の名前が表示される[0m
+[32m      コメント一覧でコメントの内容が表示される[0m
+[32m      自分が投稿したコメントの削除ボタンが表示される[0m
+[32m      他人が投稿したコメントの削除ボタンは表示されない[0m
+[32m      コメント投稿フォームが表示される[0m
+[32m      送信ボタンが表示される[0m
+    いいね機能のテスト
+[31m      自分のいいねが正しく保存される (FAILED - 25)[0m
+[31m      リダイレクト先が、いいねをした投稿詳細画面になっている (FAILED - 26)[0m
+[31m      リダイレクト先でいいね数が正しく更新されている (FAILED - 27)[0m
+    コメント追加機能のテスト
+[32m      自分のコメントが正しく保存される[0m
+[32m      リダイレクト先が、コメントをした投稿詳細画面になっている[0m
+[32m      リダイレクト先でコメント数が正しく更新されている[0m
+[32m      リダイレクト先で新しいコメントが表示されている[0m
+    コメント削除機能のテスト
+[32m      自分のコメントが正しく削除される[0m
+[32m      リダイレクト先が、コメントをしていた投稿詳細画面になっている[0m
+[32m      リダイレクト先でコメント数が正しく更新されている[0m
+[32m      リダイレクト先で削除したコメントは表示されない[0m
+  自分のユーザ詳細画面のテスト[課題4追加分]
+    表示の確認
+[32m      いいねボタンのハートアイコンが表示される[0m
+[31m      いいねボタンが表示される (FAILED - 28)[0m
+[32m      コメント数が表示される[0m
+    いいね作成機能のテスト
+[31m      自分のいいねが正しく保存される (FAILED - 29)[0m
+[31m      リダイレクト先が自分のユーザ詳細画面になっている (FAILED - 30)[0m
+[31m      リダイレクト先でいいね数が正しく更新されている (FAILED - 31)[0m
 
 Failures:
 
-  1) [STEP2] ユーザログイン後のテスト 自分の投稿詳細画面のテスト 投稿成功のテスト 自分の新しい投稿が正しく保存される
-     [31mFailure/Error: expect { click_button 'Create Book' }.to change(user.books, :count).by(1)[0m
-     [31m  expected `Book::ActiveRecord_Associations_CollectionProxy#count` to have changed by 1, but was changed by 0[0m
-     [36m# ./spec/system/02_after_login_spec.rb:172:in `block (4 levels) in <main>'[0m
+  1) [STEP1] ユーザログイン前のテスト トップ画面のテスト 表示内容の確認 Log inリンクの内容が正しい
+     [31mFailure/Error: expect(page).to have_link log_in_link, href: new_user_session_path[0m
+     [31m  expected to find link "\n        Log in\n" with href "/users/sign_in" but there were no matches[0m
+     [36m# ./spec/system/01_before_login_spec.rb:19:in `block (4 levels) in <main>'[0m
 
-Finished in 51.88 seconds (files took 1.5 seconds to load)
-[31m201 examples, 1 failure[0m
+  2) [STEP1] ユーザログイン前のテスト トップ画面のテスト 表示内容の確認 Sign upリンクの内容が正しい
+     [31mFailure/Error: expect(page).to have_link sign_up_link, href: new_user_registration_path[0m
+     [31m  expected to find link "\n        Sign up\n" with href "/users/sign_up" but there were no matches[0m
+     [36m# ./spec/system/01_bfore_login_spec.rb:27:in `block (4 levels) in <main>'[0m
+
+  3) [STEP3] 仕上げのテスト アイコンのテスト トップ画面 本のアイコンが表示される
+     [31mFailure/Error: is_expected.to have_selector '.fas.fa-book'[0m
+     [31m  expected to find css ".fas.fa-book" but there were no matches[0m
+     [36m# ./spec/system/03_finishing_touches_spec.rb:358:in `block (4 levels) in <main>'[0m
+
+  4) [STEP3] 仕上げのテスト アイコンのテスト アバウト画面 本のアイコンが表示される
+     [31mFailure/Error: is_expected.to have_selector '.fas.fa-book'[0m
+     [31m  expected to find css ".fas.fa-book" but there were no matches[0m
+     [36m# ./spec/system/03_finishing_touches_spec.rb:370:in `block (4 levels) in <main>'[0m
+
+  5) [STEP3] 仕上げのテスト アイコンのテスト ヘッダー: ログインしていない場合 Homeリンクのアイコンが表示される
+     [31mFailure/Error: is_expected.to have_selector '.fas.fa-home'[0m
+     [31m  expected to find css ".fas.fa-home" but there were no matches[0m
+     [36m# ./spec/system/03_finishing_touches_spec.rb:382:in `block (4 levels) in <main>'[0m
+
+  6) [STEP3] 仕上げのテスト アイコンのテスト ヘッダー: ログインしていない場合 Aboutリンクのアイコンが表示される
+     [31mFailure/Error: is_expected.to have_selector '.fas.fa-link'[0m
+     [31m  expected to find css ".fas.fa-link" but there were no matches[0m
+     [36m# ./spec/system/03_finishing_touches_spec.rb:385:in `block (4 levels) in <main>'[0m
+
+  7) [STEP3] 仕上げのテスト アイコンのテスト ヘッダー: ログインしていない場合 Sign upリンクのアイコンが表示される
+     [31mFailure/Error: is_expected.to have_selector '.fas.fa-user-plus'[0m
+     [31m  expected to find css ".fas.fa-user-plus" but there were no matches[0m
+     [36m# ./spec/system/03_finishing_touches_spec.rb:388:in `block (4 levels) in <main>'[0m
+
+  8) [STEP3] 仕上げのテスト アイコンのテスト ヘッダー: ログインしていない場合 Log inリンクのアイコンが表示される
+     [31mFailure/Error: is_expected.to have_selector '.fas.fa-sign-in-alt'[0m
+     [31m  expected to find css ".fas.fa-sign-in-alt" but there were no matches[0m
+     [36m# ./spec/system/03_finishing_touches_spec.rb:391:in `block (4 levels) in <main>'[0m
+
+  9) [STEP3] 仕上げのテスト アイコンのテスト ヘッダー: ログインしている場合 Homeリンクのアイコンが表示される
+     [31mFailure/Error: is_expected.to have_selector '.fas.fa-home'[0m
+     [31m  expected to find css ".fas.fa-home" but there were no matches[0m
+     [36m# ./spec/system/03_finishing_touches_spec.rb:406:in `block (4 levels) in <main>'[0m
+
+  10) [STEP3] 仕上げのテスト アイコンのテスト ヘッダー: ログインしている場合 Usersリンクのアイコンが表示される
+      [31mFailure/Error: is_expected.to have_selector '.fas.fa-users'[0m
+      [31m  expected to find css ".fas.fa-users" but there were no matches[0m
+      [36m# ./spec/system/03_finishing_touches_spec.rb:409:in `block (4 levels) in <main>'[0m
+
+  11) [STEP3] 仕上げのテスト アイコンのテスト ヘッダー: ログインしている場合 Booksリンクのアイコンが表示される
+      [31mFailure/Error: is_expected.to have_selector '.fas.fa-book-open'[0m
+      [31m  expected to find css ".fas.fa-book-open" but there were no matches[0m
+      [36m# ./spec/system/03_finishing_touches_spec.rb:412:in `block (4 levels) in <main>'[0m
+
+  12) [STEP3] 仕上げのテスト アイコンのテスト ヘッダー: ログインしている場合 Log outリンクのアイコンが表示される
+      [31mFailure/Error: is_expected.to have_selector '.fas.fa-sign-out-alt'[0m
+      [31m  expected to find css ".fas.fa-sign-out-alt" but there were no matches[0m
+      [36m# ./spec/system/03_finishing_touches_spec.rb:415:in `block (4 levels) in <main>'[0m
+
+  13) [STEP3] 仕上げのテスト アイコンのテスト サイドバー ユーザ一覧画面でレンチアイコンが表示される
+      [31mFailure/Error: is_expected.to have_selector '.fas.fa-user-cog'[0m
+      [31m  expected to find css ".fas.fa-user-cog" but there were no matches[0m
+      [36m# ./spec/system/03_finishing_touches_spec.rb:431:in `block (4 levels) in <main>'[0m
+
+  14) [STEP3] 仕上げのテスト アイコンのテスト サイドバー ユーザ詳細画面でレンチアイコンが表示される
+      [31mFailure/Error: is_expected.to have_selector '.fas.fa-user-cog'[0m
+      [31m  expected to find css ".fas.fa-user-cog" but there were no matches[0m
+      [36m# ./spec/system/03_finishing_touches_spec.rb:435:in `block (4 levels) in <main>'[0m
+
+  15) [STEP3] 仕上げのテスト アイコンのテスト サイドバー 投稿一覧画面でレンチアイコンが表示される
+      [31mFailure/Error: is_expected.to have_selector '.fas.fa-user-cog'[0m
+      [31m  expected to find css ".fas.fa-user-cog" but there were no matches[0m
+      [36m# ./spec/system/03_finishing_touches_spec.rb:439:in `block (4 levels) in <main>'[0m
+
+  16) [STEP3] 仕上げのテスト アイコンのテスト サイドバー 投稿詳細画面でレンチアイコンが表示される
+      [31mFailure/Error: is_expected.to have_selector '.fas.fa-user-cog'[0m
+      [31m  expected to find css ".fas.fa-user-cog" but there were no matches[0m
+      [36m# ./spec/system/03_finishing_touches_spec.rb:443:in `block (4 levels) in <main>'[0m
+
+  17) [STEP4] いいねとコメントのテスト 投稿一覧画面のテスト[課題4追加分] 表示の確認 いいねボタンが表示される
+      [31mFailure/Error: expect(page).to have_link '', href: book_favorites_path(book)[0m
+      [31m[0m
+      [31mNoMethodError:[0m
+      [31m  undefined method `book_favorites_path' for #<RSpec::ExampleGroups::STEP4::Nested4::Nested "いいねボタンが表示される" (./spec/system/04_favorite_comment_spec.rb:27)>[0m
+      [36m# ./spec/system/04_favorite_comment_spec.rb:28:in `block (4 levels) in <main>'[0m
+
+  18) [STEP4] いいねとコメントのテスト 投稿一覧画面のテスト[課題4追加分] いいね作成機能のテスト 自分のいいねが正しく保存される
+      [31mFailure/Error: expect { click_link '', href: book_favorites_path(book) }.to change(user.favorites, :count).by(1)[0m
+      [31m[0m
+      [31mNoMethodError:[0m
+      [31m  undefined method `book_favorites_path' for #<RSpec::ExampleGroups::STEP4::Nested4::Nested_2 "自分のいいねが正しく保存される" (./spec/system/04_favorite_comment_spec.rb:37)>[0m
+      [36m# ./spec/system/04_favorite_comment_spec.rb:38:in `block (5 levels) in <main>'[0m
+      [36m# ./spec/system/04_favorite_comment_spec.rb:38:in `block (4 levels) in <main>'[0m
+
+  19) [STEP4] いいねとコメントのテスト 投稿一覧画面のテスト[課題4追加分] いいね作成機能のテスト リダイレクト先が投稿一覧画面になっている
+      [31mFailure/Error: click_link '', href: book_favorites_path(book)[0m
+      [31m[0m
+      [31mNoMethodError:[0m
+      [31m  undefined method `book_favorites_path' for #<RSpec::ExampleGroups::STEP4::Nested4::Nested_2 "リダイレクト先が投稿一覧画面になっている" (./spec/system/04_favorite_comment_spec.rb:40)>[0m
+      [36m# ./spec/system/04_favorite_comment_spec.rb:41:in `block (4 levels) in <main>'[0m
+
+  20) [STEP4] いいねとコメントのテスト 投稿一覧画面のテスト[課題4追加分] いいね作成機能のテスト リダイレクト先でいいね数が正しく更新されている
+      [31mFailure/Error: click_link '', href: book_favorites_path(book)[0m
+      [31m[0m
+      [31mNoMethodError:[0m
+      [31m  undefined method `book_favorites_path' for #<RSpec::ExampleGroups::STEP4::Nested4::Nested_2 "リダイレクト先でいいね数が正しく更新されている" (./spec/system/04_favorite_comment_spec.rb:44)>[0m
+      [36m# ./spec/system/04_favorite_comment_spec.rb:45:in `block (4 levels) in <main>'[0m
+
+  21) [STEP4] いいねとコメントのテスト 投稿一覧画面のテスト[課題4追加分] いいね削除機能のテスト 自分のいいねが正しく削除される
+      [31mFailure/Error: expect { click_link '', href: book_favorites_path(other_book) }.to change(user.favorites, :count).by(-1)[0m
+      [31m[0m
+      [31mNoMethodError:[0m
+      [31m  undefined method `book_favorites_path' for #<RSpec::ExampleGroups::STEP4::Nested4::Nested_3 "自分のいいねが正しく削除される" (./spec/system/04_favorite_comment_spec.rb:50)>[0m
+      [36m# ./spec/system/04_favorite_comment_spec.rb:51:in `block (5 levels) in <main>'[0m
+      [36m# ./spec/system/04_favorite_comment_spec.rb:51:in `block (4 levels) in <main>'[0m
+
+  22) [STEP4] いいねとコメントのテスト 投稿一覧画面のテスト[課題4追加分] いいね削除機能のテスト リダイレクト先が投稿一覧画面になっている
+      [31mFailure/Error: click_link '', href: book_favorites_path(other_book)[0m
+      [31m[0m
+      [31mNoMethodError:[0m
+      [31m  undefined method `book_favorites_path' for #<RSpec::ExampleGroups::STEP4::Nested4::Nested_3 "リダイレクト先が投稿一覧画面になっている" (./spec/system/04_favorite_comment_spec.rb:53)>[0m
+      [36m# ./spec/system/04_favorite_comment_spec.rb:54:in `block (4 levels) in <main>'[0m
+
+  23) [STEP4] いいねとコメントのテスト 投稿一覧画面のテスト[課題4追加分] いいね削除機能のテスト リダイレクト先でいいね数が正しく更新されている
+      [31mFailure/Error: click_link '', href: book_favorites_path(other_book)[0m
+      [31m[0m
+      [31mNoMethodError:[0m
+      [31m  undefined method `book_favorites_path' for #<RSpec::ExampleGroups::STEP4::Nested4::Nested_3 "リダイレクト先でいいね数が正しく更新されている" (./spec/system/04_favorite_comment_spec.rb:57)>[0m
+      [36m# ./spec/system/04_favorite_comment_spec.rb:58:in `block (4 levels) in <main>'[0m
+
+  24) [STEP4] いいねとコメントのテスト 自分の投稿詳細画面のテスト[課題4追加分] 表示の確認 いいねボタンが表示される
+      [31mFailure/Error: expect(page).to have_link '', href: book_favorites_path(book)[0m
+      [31m[0m
+      [31mNoMethodError:[0m
+      [31m  undefined method `book_favorites_path' for #<RSpec::ExampleGroups::STEP4::Nested4_2::Nested "いいねボタンが表示される" (./spec/system/04_favorite_comment_spec.rb:72)>[0m
+      [36m# ./spec/system/04_favorite_comment_spec.rb:73:in `block (4 levels) in <main>'[0m
+
+  25) [STEP4] いいねとコメントのテスト 自分の投稿詳細画面のテスト[課題4追加分] いいね機能のテスト 自分のいいねが正しく保存される
+      [31mFailure/Error: expect { click_link '', href: book_favorites_path(book) }.to change(user.favorites, :count).by(1)[0m
+      [31m[0m
+      [31mNoMethodError:[0m
+      [31m  undefined method `book_favorites_path' for #<RSpec::ExampleGroups::STEP4::Nested4_2::Nested_2 "自分のいいねが正しく保存される" (./spec/system/04_favorite_comment_spec.rb:103)>[0m
+      [36m# ./spec/system/04_favorite_comment_spec.rb:104:in `block (5 levels) in <main>'[0m
+      [36m# ./spec/system/04_favorite_comment_spec.rb:104:in `block (4 levels) in <main>'[0m
+
+  26) [STEP4] いいねとコメントのテスト 自分の投稿詳細画面のテスト[課題4追加分] いいね機能のテスト リダイレクト先が、いいねをした投稿詳細画面になっている
+      [31mFailure/Error: click_link '', href: book_favorites_path(book)[0m
+      [31m[0m
+      [31mNoMethodError:[0m
+      [31m  undefined method `book_favorites_path' for #<RSpec::ExampleGroups::STEP4::Nested4_2::Nested_2 "リダイレクト先が、いいねをした投稿詳細画面になっている" (./spec/system/04_favorite_comment_spec.rb:106)>[0m
+      [36m# ./spec/system/04_favorite_comment_spec.rb:107:in `block (4 levels) in <main>'[0m
+
+  27) [STEP4] いいねとコメントのテスト 自分の投稿詳細画面のテスト[課題4追加分] いいね機能のテスト リダイレクト先でいいね数が正しく更新されている
+      [31mFailure/Error: click_link '', href: book_favorites_path(book)[0m
+      [31m[0m
+      [31mNoMethodError:[0m
+      [31m  undefined method `book_favorites_path' for #<RSpec::ExampleGroups::STEP4::Nested4_2::Nested_2 "リダイレクト先でいいね数が正しく更新されている" (./spec/system/04_favorite_comment_spec.rb:110)>[0m
+      [36m# ./spec/system/04_favorite_comment_spec.rb:111:in `block (4 levels) in <main>'[0m
+
+  28) [STEP4] いいねとコメントのテスト 自分のユーザ詳細画面のテスト[課題4追加分] 表示の確認 いいねボタンが表示される
+      [31mFailure/Error: expect(page).to have_link '', href: book_favorites_path(book)[0m
+      [31m[0m
+      [31mNoMethodError:[0m
+      [31m  undefined method `book_favorites_path' for #<RSpec::ExampleGroups::STEP4::Nested4_3::Nested "いいねボタンが表示される" (./spec/system/04_favorite_comment_spec.rb:168)>[0m
+      [36m# ./spec/system/04_favorite_comment_spec.rb:169:in `block (4 levels) in <main>'[0m
+
+  29) [STEP4] いいねとコメントのテスト 自分のユーザ詳細画面のテスト[課題4追加分] いいね作成機能のテスト 自分のいいねが正しく保存される
+      [31mFailure/Error: expect { click_link '', href: book_favorites_path(book) }.to change(user.favorites, :count).by(1)[0m
+      [31m[0m
+      [31mNoMethodError:[0m
+      [31m  undefined method `book_favorites_path' for #<RSpec::ExampleGroups::STEP4::Nested4_3::Nested_2 "自分のいいねが正しく保存される" (./spec/system/04_favorite_comment_spec.rb:176)>[0m
+      [36m# ./spec/system/04_favorite_comment_spec.rb:177:in `block (5 levels) in <main>'[0m
+      [36m# ./spec/system/04_favorite_comment_spec.rb:177:in `block (4 levels) in <main>'[0m
+
+  30) [STEP4] いいねとコメントのテスト 自分のユーザ詳細画面のテスト[課題4追加分] いいね作成機能のテスト リダイレクト先が自分のユーザ詳細画面になっている
+      [31mFailure/Error: click_link '', href: book_favorites_path(book)[0m
+      [31m[0m
+      [31mNoMethodError:[0m
+      [31m  undefined method `book_favorites_path' for #<RSpec::ExampleGroups::STEP4::Nested4_3::Nested_2 "リダイレクト先が自分のユーザ詳細画面になっている" (./spec/system/04_favorite_comment_spec.rb:179)>[0m
+      [36m# ./spec/system/04_favorite_comment_spec.rb:180:in `block (4 levels) in <main>'[0m
+
+  31) [STEP4] いいねとコメントのテスト 自分のユーザ詳細画面のテスト[課題4追加分] いいね作成機能のテスト リダイレクト先でいいね数が正しく更新されている
+      [31mFailure/Error: click_link '', href: book_favorites_path(book)[0m
+      [31m[0m
+      [31mNoMethodError:[0m
+      [31m  undefined method `book_favorites_path' for #<RSpec::ExampleGroups::STEP4::Nested4_3::Nested_2 "リダイレクト先でいいね数が正しく更新されている" (./spec/system/04_favorite_comment_spec.rb:183)>[0m
+      [36m# ./spec/system/04_favorite_comment_spec.rb:184:in `block (4 levels) in <main>'[0m
+
+Finished in 56.62 seconds (files took 1.96 seconds to load)
+[31m239 examples, 31 failures[0m
 
 Failed examples:
 
-[31mrspec ./spec/system/02_after_login_spec.rb:171[0m [36m# [STEP2] ユーザログイン後のテスト 自分の投稿詳細画面のテスト 投稿成功のテスト 自分の新しい投稿が正しく保存される[0m
+[31mrspec ./spec/system/01_before_login_spec.rb:17[0m [36m# [STEP1] ユーザログイン前のテスト トップ画面のテスト 表示内容の確認 Log inリンクの内容が正しい[0m
+[31mrspec ./spec/system/01_before_login_spec.rb:25[0m [36m# [STEP1] ユーザログイン前のテスト トップ画面のテスト 表示内容の確認 Sign upリンクの内容が正しい[0m
+[31mrspec ./spec/system/03_finishing_touches_spec.rb:357[0m [36m# [STEP3] 仕上げのテスト アイコンのテスト トップ画面 本のアイコンが表示される[0m
+[31mrspec ./spec/system/03_finishing_touches_spec.rb:369[0m [36m# [STEP3] 仕上げのテスト アイコンのテスト アバウト画面 本のアイコンが表示される[0m
+[31mrspec ./spec/system/03_finishing_touches_spec.rb:381[0m [36m# [STEP3] 仕上げのテスト アイコンのテスト ヘッダー: ログインしていない場合 Homeリンクのアイコンが表示される[0m
+[31mrspec ./spec/system/03_finishing_touches_spec.rb:384[0m [36m# [STEP3] 仕上げのテスト アイコンのテスト ヘッダー: ログインしていない場合 Aboutリンクのアイコンが表示される[0m
+[31mrspec ./spec/system/03_finishing_touches_spec.rb:387[0m [36m# [STEP3] 仕上げのテスト アイコンのテスト ヘッダー: ログインしていない場合 Sign upリンクのアイコンが表示される[0m
+[31mrspec ./spec/system/03_finishing_touches_spec.rb:390[0m [36m# [STEP3] 仕上げのテスト アイコンのテスト ヘッダー: ログインしていない場合 Log inリンクのアイコンが表示される[0m
+[31mrspec ./spec/system/03_finishing_touches_spec.rb:405[0m [36m# [STEP3] 仕上げのテスト アイコンのテスト ヘッダー: ログインしている場合 Homeリンクのアイコンが表示される[0m
+[31mrspec ./spec/system/03_finishing_touches_spec.rb:408[0m [36m# [STEP3] 仕上げのテスト アイコンのテスト ヘッダー: ログインしている場合 Usersリンクのアイコンが表示される[0m
+[31mrspec ./spec/system/03_finishing_touches_spec.rb:411[0m [36m# [STEP3] 仕上げのテスト アイコンのテスト ヘッダー: ログインしている場合 Booksリンクのアイコンが表示される[0m
+[31mrspec ./spec/system/03_finishing_touches_spec.rb:414[0m [36m# [STEP3] 仕上げのテスト アイコンのテスト ヘッダー: ログインしている場合 Log outリンクのアイコンが表示される[0m
+[31mrspec ./spec/system/03_finishing_touches_spec.rb:429[0m [36m# [STEP3] 仕上げのテスト アイコンのテスト サイドバー ユーザ一覧画面でレンチアイコンが表示される[0m
+[31mrspec ./spec/system/03_finishing_touches_spec.rb:433[0m [36m# [STEP3] 仕上げのテスト アイコンのテスト サイドバー ユーザ詳細画面でレンチアイコンが表示される[0m
+[31mrspec ./spec/system/03_finishing_touches_spec.rb:437[0m [36m# [STEP3] 仕上げのテスト アイコンのテスト サイドバー 投稿一覧画面でレンチアイコンが表示される[0m
+[31mrspec ./spec/system/03_finishing_touches_spec.rb:441[0m [36m# [STEP3] 仕上げのテスト アイコンのテスト サイドバー 投稿詳細画面でレンチアイコンが表示される[0m
+[31mrspec ./spec/system/04_favorite_comment_spec.rb:27[0m [36m# [STEP4] いいねとコメントのテスト 投稿一覧画面のテスト[課題4追加分] 表示の確認 いいねボタンが表示される[0m
+[31mrspec ./spec/system/04_favorite_comment_spec.rb:37[0m [36m# [STEP4] いいねとコメントのテスト 投稿一覧画面のテスト[課題4追加分] いいね作成機能のテスト 自分のいいねが正しく保存される[0m
+[31mrspec ./spec/system/04_favorite_comment_spec.rb:40[0m [36m# [STEP4] いいねとコメントのテスト 投稿一覧画面のテスト[課題4追加分] いいね作成機能のテスト リダイレクト先が投稿一覧画面になっている[0m
+[31mrspec ./spec/system/04_favorite_comment_spec.rb:44[0m [36m# [STEP4] いいねとコメントのテスト 投稿一覧画面のテスト[課題4追加分] いいね作成機能のテスト リダイレクト先でいいね数が正しく更新されている[0m
+[31mrspec ./spec/system/04_favorite_comment_spec.rb:50[0m [36m# [STEP4] いいねとコメントのテスト 投稿一覧画面のテスト[課題4追加分] いいね削除機能のテスト 自分のいいねが正しく削除される[0m
+[31mrspec ./spec/system/04_favorite_comment_spec.rb:53[0m [36m# [STEP4] いいねとコメントのテスト 投稿一覧画面のテスト[課題4追加分] いいね削除機能のテスト リダイレクト先が投稿一覧画面になっている[0m
+[31mrspec ./spec/system/04_favorite_comment_spec.rb:57[0m [36m# [STEP4] いいねとコメントのテスト 投稿一覧画面のテスト[課題4追加分] いいね削除機能のテスト リダイレクト先でいいね数が正しく更新されている[0m
+[31mrspec ./spec/system/04_favorite_comment_spec.rb:72[0m [36m# [STEP4] いいねとコメントのテスト 自分の投稿詳細画面のテスト[課題4追加分] 表示の確認 いいねボタンが表示される[0m
+[31mrspec ./spec/system/04_favorite_comment_spec.rb:103[0m [36m# [STEP4] いいねとコメントのテスト 自分の投稿詳細画面のテスト[課題4追加分] いいね機能のテスト 自分のいいねが正しく保存される[0m
+[31mrspec ./spec/system/04_favorite_comment_spec.rb:106[0m [36m# [STEP4] いいねとコメントのテスト 自分の投稿詳細画面のテスト[課題4追加分] いいね機能のテスト リダイレクト先が、いいねをした投稿詳細画面になっている[0m
+[31mrspec ./spec/system/04_favorite_comment_spec.rb:110[0m [36m# [STEP4] いいねとコメントのテスト 自分の投稿詳細画面のテスト[課題4追加分] いいね機能のテスト リダイレクト先でいいね数が正しく更新されている[0m
+[31mrspec ./spec/system/04_favorite_comment_spec.rb:168[0m [36m# [STEP4] いいねとコメントのテスト 自分のユーザ詳細画面のテスト[課題4追加分] 表示の確認 いいねボタンが表示される[0m
+[31mrspec ./spec/system/04_favorite_comment_spec.rb:176[0m [36m# [STEP4] いいねとコメントのテスト 自分のユーザ詳細画面のテスト[課題4追加分] いいね作成機能のテスト 自分のいいねが正しく保存される[0m
+[31mrspec ./spec/system/04_favorite_comment_spec.rb:179[0m [36m# [STEP4] いいねとコメントのテスト 自分のユーザ詳細画面のテスト[課題4追加分] いいね作成機能のテスト リダイレクト先が自分のユーザ詳細画面になっている[0m
+[31mrspec ./spec/system/04_favorite_comment_spec.rb:183[0m [36m# [STEP4] いいねとコメントのテスト 自分のユーザ詳細画面のテスト[課題4追加分] いいね作成機能のテスト リダイレクト先でいいね数が正しく更新されている[0m
 
