@@ -26,13 +26,13 @@
               
               <% if user_signed_in? %>
                 <%= link_to user_path(current_user.id), class: 'text-white' do %>
-                  <i class="fa-solid fa-house"></i>
+                  <i class="fas fa-home"></i>
                   Home
                 <% end %>
               
               <% else %>
                 <%= link_to root_path, class:'text-white' do %>
-                  <i class="fa-solid fa-house"></i>
+                  <i class="fas fa-home"></i>
                   Home
                 <% end %>
               <% end %>
@@ -41,38 +41,38 @@
             <% if user_signed_in? %>
             <li class="nav-item ml-auto mr-3">
               <%= link_to users_path, class:'text-white' do %>
-                <i class="fa-solid fa-users"></i>
+                <i class="fas fa-users"></i>
                 Users
               <% end %>
             </li>
             <li class="nav-item mr-3">
               <%= link_to books_path, class:'text-white' do %>
-                <i class="fa-solid fa-book-open"></i>
+                <i class="fas fa-book-open"></i>
                 Books
               <% end %>
             </li>
             <li class="nav-item mr-3">
               <%= link_to destroy_user_session_path, method: :delete, class:'text-white' do %>
-                <i class="fa-solid fa-right-from-bracket"></i>
+                <i class="fas fa-sign-out-alt"></i>
                 Log out
               <% end %>
             </li>
             <% else %>
             <li class="nav-item ml-auto mr-3">
               <%= link_to about_path, class:'text-white' do %>
-                <i class="fa-solid fa-link"></i>
+                <i class="fas fa-link"></i>
                 About
               <% end %>
             </li>
             <li class="nav-item mr-3">
               <%= link_to  new_user_registration_path, class:'text-white' do %>
-                <i class="fa-solid fa-user-plus"></i>
+                <i class="fas fa-user-plus"></i>
                 Sign up
               <% end %>
             </li>
             <li class="nav-item mr-3">
               <%= link_to new_user_session_path, class:'text-white' do %>
-                <i class="fa-solid fa-sign-in-alt"></i>
+                <i class="fas fa-sign-in-alt"></i>
                 Log in
               <% end %>
             </li>
